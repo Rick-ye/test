@@ -1,4 +1,4 @@
-package com.rick.collection;
+package com.rick.collection.stack;
 
 import java.util.Iterator;
 
