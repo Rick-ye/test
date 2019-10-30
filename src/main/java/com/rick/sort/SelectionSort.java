@@ -18,7 +18,9 @@ public class SelectionSort extends Sort {
     }
 
     public static void main(String[] args) {
-        Comparable[] arr = {3,53,2,5,7,23,};
+        //Comparable[] arr = {3,53,2,5,7,23,};
+        Comparable[] arr = {'a','d','t','v','w','f','h','i'};
+        //Comparable[] arr = {"ad","dd","dt"};
         new SelectionSort().sort(arr);
         show(arr);
     }
