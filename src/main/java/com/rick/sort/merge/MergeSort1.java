@@ -6,6 +6,8 @@ import com.rick.sort.Sort;
  * 归并算法
  * 将两个有序的数组归并成一个更大的有序数组
  *
+ * 归并排序将数组分成两个子数组分别排序，并将两个有序的子数组归并
+ *
  * 自顶向下的归并排序
  */
 public class MergeSort1 extends Sort {
