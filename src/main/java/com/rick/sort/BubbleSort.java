@@ -7,27 +7,22 @@ package com.rick.sort;
  *
  * 数组中大的数“沉底”，小的数“冒泡上升”，
  */
-public class BubbleSort {
+public class BubbleSort extends Sort {
 
-    public static int[] sort(int[] arr) {
+
+    protected void sort(Comparable[] arr) {
         for (int i = 0; i<arr.length; i++) {
             for (int j = 0; j < arr.length - i - 1; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    int temp;
-                    temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
+                if (compare(arr[j+1], arr[j])) {
+                    exch(j, j+1, arr);
                 }
             }
         }
-        return arr;
     }
 
     public static void main(String[] args) {
-        int[] arr = {3,53,2,5,7,23,2};
-        arr = sort(arr);
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i]);
-        }
+        Comparable[] arr = {3,53,2,5,7,23,2};
+        new BubbleSort().sort(arr);
+        show(arr);
     }
 }

@@ -1,30 +1,27 @@
 package com.rick.sort;
 
 /**
- * 选择排序：
- * 基本思路：第一轮拿出第一个数与后面剩余的数进行比较，确定第一个数，
- * 第二轮取出第二个数与后面剩余的数进行比较，确定第二个数。以此类推。
+ * 选择排序算法
+ * 首先，找到数组中最小的那个元素，其次，将它和数组的第一个元素交换位置；
+ * 再次，在剩下的元素中找到最小的元素，将它与数组中的第二个元素交换位置；
+ * 如此往复，直到将整个数组排序。因为它在不断地选择剩余元素中的最小元素
  */
-public class SelectionSort {
-    public static int[] sort(int[] arr) {
+public class SelectionSort extends Sort {
+    public void sort(Comparable[] arr) {
         for (int i = 0; i<arr.length; i++) {
             for (int j = i + 1; j<arr.length; j++) {
-                if (arr[i] > arr[j]) {
-                    int temp;
-                    temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
+                if (compare(arr[j], arr[i])) {
+                    exch(i, j, arr);
                 }
             }
         }
-        return arr;
     }
 
     public static void main(String[] args) {
-        int[] arr = {3,53,2,5,7,23,};
-        arr = sort(arr);
-        for (int i = 0; i < arr.length; i++) {
-            System.out.println(arr[i]);
-        }
+        //Comparable[] arr = {3,53,2,5,7,23,};
+        Comparable[] arr = {'a','d','t','v','w','f','h','i'};
+        //Comparable[] arr = {"ad","dd","dt"};
+        new SelectionSort().sort(arr);
+        show(arr);
     }
 }
