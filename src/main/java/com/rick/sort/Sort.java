@@ -83,7 +83,4 @@ public abstract class Sort {
         }
     }
 
-    public static void main(String[] args) {
-        System.out.println(compare(1,3));
-    }
 }

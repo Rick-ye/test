@@ -8,12 +8,13 @@ package com.rick.sort;
  */
 public class SelectionSort extends Sort {
     public void sort(Comparable[] arr) {
-        for (int i = 0; i<arr.length; i++) {
-            for (int j = i + 1; j<arr.length; j++) {
-                if (compare(arr[j], arr[i])) {
-                    exch(i, j, arr);
-                }
+        for (int i = 0; i < arr.length; i++) {
+            int min = i;    //最小元素的索引
+            for (int j = i + 1; j < arr.length; j++) {
+                if (compare(arr[j], arr[min]))
+                    min = j;
             }
+            exch(i, min, arr);
         }
     }
 
