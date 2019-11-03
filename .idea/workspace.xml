@@ -57,11 +57,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/rick/sort/SelectionSort.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="16" column="30" lean-forward="true" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
+            <state relative-caret-position="475">
+              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="468">
+              <caret line="724" column="34" selection-start-line="724" selection-start-column="34" selection-end-line="724" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -82,7 +91,7 @@
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
-              <caret line="48" column="34" lean-forward="true" selection-start-line="48" selection-start-column="34" selection-end-line="48" selection-end-column="34" />
+              <caret line="48" column="34" selection-start-line="48" selection-start-column="34" selection-end-line="48" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -104,6 +113,11 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>theUnsafe</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -133,8 +147,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/rick/sort/merge/MergeSort2.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rick/sort/merge/MergeSort1.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/rick/sort/QuickSort.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rick/sort/Sort.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/rick/sort/SelectionSort.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rick/lock/lock.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rick/lock/Test.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/rick/lock/Lock.java" />
       </list>
     </option>
   </component>
@@ -198,8 +213,8 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1572787913174" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1572598407929" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../spring-cloud" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -225,7 +240,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.SelectionSort">
+  <component name="RunManager" selected="Application.Lock">
+    <configuration name="Lock" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.rick.lock.Lock" />
+      <module name="java-learning" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.rick.lock.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MergeSort" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.rick.sort.MergeSort" />
       <module name="java-learning" />
@@ -240,9 +268,8 @@
       </method>
     </configuration>
     <configuration name="MergeSort2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.rick.sort.merge.MergeSort2" />
+      <module name="java-learning" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.rick.sort.merge.*" />
@@ -256,18 +283,6 @@
     <configuration name="QuickSort" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.rick.sort.QuickSort" />
       <module name="java-learning" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.rick.sort.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SelectionSort (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.rick.sort.SelectionSort" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.rick.sort.*" />
@@ -293,9 +308,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.SelectionSort" />
+        <item itemvalue="Application.Lock" />
+        <item itemvalue="Application.QuickSort" />
         <item itemvalue="Application.MergeSort2" />
-        <item itemvalue="Application.SelectionSort (1)" />
         <item itemvalue="Application.QuickSort" />
         <item itemvalue="Application.MergeSort" />
       </list>
@@ -313,10 +328,7 @@
       <updated>1570690399054</updated>
       <workItem from="1570690403373" duration="6030000" />
       <workItem from="1571275658328" duration="12181000" />
-      <workItem from="1571620275954" duration="68790000" />
-      <workItem from="1572526352713" duration="638000" />
-      <workItem from="1572758558226" duration="3083000" />
-      <workItem from="1572787018256" duration="895000" />
+      <workItem from="1571620275954" duration="75023000" />
     </task>
     <servers />
   </component>
@@ -329,14 +341,14 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91617000" />
+    <option name="totallyTimeSpent" value="93235000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6710098" visible="true" weight="0.15191898" />
-      <window_info id="Structure" order="1" sideWeight="0.32899022" side_tool="true" visible="true" weight="0.15191898" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6712018" visible="true" weight="0.15191898" />
+      <window_info id="Structure" order="1" sideWeight="0.32879817" side_tool="true" visible="true" weight="0.15191898" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -344,8 +356,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3340564" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3229508" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4409836" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.5327869" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -508,20 +520,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rick/sort/SortCompare.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rick/sort/InsertionSort.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="22" column="18" lean-forward="true" selection-start-line="20" selection-start-column="8" selection-end-line="22" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rick/sort/MergeSort.java" />
     <entry file="jar://D:/java-tool/jdk/jdk_8.0.131/src.zip!/java/util/Arrays.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -547,20 +545,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://D:/java-tool/jdk/jdk_8.0.131/src.zip!/java/lang/Character.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="7100" column="5" selection-start-line="7100" selection-start-column="5" selection-end-line="7100" selection-end-column="5" />
-          <folding>
-            <element signature="e#260806#260807#0" expanded="true" />
-            <element signature="e#260872#260873#0" expanded="true" />
-            <element signature="e#261459#261460#0" expanded="true" />
-            <element signature="e#261487#261488#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/java-tool/jdk/jdk_8.0.131/src.zip!/java/lang/Comparable.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rick/sort/InsertionSort.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="222">
           <caret line="117" column="73" selection-start-line="117" selection-start-column="73" selection-end-line="117" selection-end-column="73" />
@@ -571,23 +556,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret line="65" column="30" selection-start-line="65" selection-start-column="30" selection-end-line="65" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rick/sort/merge/MergeSort1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/rick/sort/QuickSort.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -615,17 +583,60 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://G:/tts9/jdk1.8.0_71/jre/lib/rt.jar!/sun/misc/Unsafe.class" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rick/sort/merge/MergeSort1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rick/sort/SortCompare.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="10" column="40" lean-forward="true" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://G:/tts9/jdk1.8.0_71/src.zip!/java/util/concurrent/atomic/AtomicInteger.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rick/lock/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="584">
+          <caret line="87" column="17" lean-forward="true" selection-start-line="87" selection-start-column="17" selection-end-line="87" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/rick/lock/Lock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="92" column="9" lean-forward="true" selection-start-line="92" selection-start-column="9" selection-end-line="92" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#251#275#1" expanded="true" />
+            <element signature="e#343#344#0" expanded="true" />
+            <element signature="e#371#372#0" expanded="true" />
+            <element signature="e#1365#1366#0" expanded="true" />
+            <element signature="e#1389#1390#0" expanded="true" />
+            <element signature="e#2083#2084#0" expanded="true" />
+            <element signature="e#2111#2112#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
-          <caret line="48" column="34" lean-forward="true" selection-start-line="48" selection-start-column="34" selection-end-line="48" selection-end-column="34" />
+          <caret line="48" column="34" selection-start-line="48" selection-start-column="34" selection-end-line="48" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/rick/sort/SelectionSort.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="16" column="30" lean-forward="true" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
+        <state relative-caret-position="475">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
         </state>
       </provider>
     </entry>
