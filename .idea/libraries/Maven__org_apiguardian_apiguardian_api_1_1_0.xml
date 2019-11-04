@@ -1,6 +1,7 @@
 <component name="libraryTable">
   <library name="Maven: org.apiguardian:apiguardian-api:1.1.0">
     <CLASSES>
+<<<<<<< HEAD
       <root url="jar://$MAVEN_REPOSITORY$/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar!/" />
     </CLASSES>
     <JAVADOC>
@@ -8,6 +9,15 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0-sources.jar!/" />
+=======
+      <root url="jar://D:/java-tool/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/java-tool/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/java-tool/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0-sources.jar!/" />
+>>>>>>> 7714fc718d9f529977eb09ce9562f7210cf8ac08
     </SOURCES>
   </library>
 </component>
