@@ -1,7 +1,21 @@
 package com.rick.sort;
 
+import com.rick.sort.merge.MergeSort1;
+import com.rick.sort.merge.MergeSort2;
 import org.apache.commons.lang3.time.StopWatch;
 
+/**
+ * N = 10000,T=1000
+ * Selection: 68991.0
+ * Shell: 1160.0
+ * Merge1: 1102.0
+ * Merge2: 1060.0
+ *
+ * Insertion: 81694.0
+ * Shell: 1149.0
+ * Merge1: 1158.0
+ * Merge2: 1041.0
+ */
 public class SortCompare {
 
     public static double time(String alg, Comparable[] a) {
@@ -13,6 +27,10 @@ public class SortCompare {
             new SelectionSort().sort(a);
         if ("Shell".equals(alg))
             new ShellSort().sort(a);
+        if ("Merge1".equals(alg))
+            new MergeSort1().sort(a);
+        if ("Merge2".equals(alg))
+            new MergeSort2().sort(a);
 
         return watch.getTime();
     }
@@ -33,14 +51,20 @@ public class SortCompare {
         String alg1 = "Insertion";
         String alg2 = "Selection";
         String alg3 = "Shell";
-        int N = Integer.parseInt("1000");
-        int T = Integer.parseInt("100");
+        String alg4 = "Merge1";
+        String alg5 = "Merge2";
+        int N = Integer.parseInt("10000");
+        int T = Integer.parseInt("1000");
         double t1 = timeRandomInput(alg1, N, T);
-        double t2 = timeRandomInput(alg2, N, T);
+//        double t2 = timeRandomInput(alg2, N, T);
         double t3 = timeRandomInput(alg3, N, T);
+        double t4 = timeRandomInput(alg4, N, T);
+        double t5 = timeRandomInput(alg5, N, T);
 
         System.out.println("Insertion: " + t1);
-        System.out.println("Selection: " + t2);
+//        System.out.println("Selection: " + t2);
         System.out.println("Shell: " + t3);
+        System.out.println("Merge1: " + t4);
+        System.out.println("Merge2: " + t5);
     }
 }

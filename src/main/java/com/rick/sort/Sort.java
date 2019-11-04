@@ -65,11 +65,9 @@ public abstract class Sort {
      */
     protected void merge(Comparable[] a, int lo, int mid, int hi) {
         int i = lo, j = mid + 1;
-
         for (int k = lo; k <= hi; k++) {
             aux[k] = a[k];
         }
-
         //归并回a数组中
         for (int k = lo; k <= hi; k++) {
             if (i > mid)        //左半边用尽，取右半边的元素
