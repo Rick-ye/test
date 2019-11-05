@@ -1,5 +1,8 @@
 package com.rick.sort;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * 插入排序算法
  * 通常人们整理桥牌的方法是一张一张得来，将一张桥牌插入到其他已经有序的牌中的适当位置
@@ -19,7 +22,7 @@ public class InsertionSort extends Sort {
     }
 
     public static void main(String[] args) {
-        Comparable[] arr = {3,53,2,5,7,23};
+        Comparable[] arr = {"3.0","53.2","2.2","2.3","5","7","23"};
         new InsertionSort().sort(arr);
         show(arr);
     }
