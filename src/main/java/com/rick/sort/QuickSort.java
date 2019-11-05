@@ -11,11 +11,7 @@ public class QuickSort extends Sort {
     @Override
     protected void sort(Comparable[] a) {
         //打乱数组
-        show(a);
-        System.out.println();
         Collections.shuffle(Arrays.asList(a));
-        show(a);
-        System.out.println();
         sort(a, 0, a.length - 1);
     }
 
@@ -34,7 +30,8 @@ public class QuickSort extends Sort {
     }
 
     /**
-     * 分区
+     * 分区,每次以a[lo]（数组的第一个元素）为切分元素，
+     * 小于a[lo]放在左边，大于a[lo]放在右边，
      * @param a
      * @param lo
      * @param hi
@@ -54,13 +51,14 @@ public class QuickSort extends Sort {
             if (i >= j)
                 break;
             exch(i, j, a);     //将v=a[j]放入正确的位置
-        }   //27,38,50,13,49,65,76,97 || 13,27,50,38,49,65,76,97
+        }
         exch(lo, j, a);     //将v=a[j]放入正确的位置
         return j;
     }
 
     public static void main(String[] args) {
-        Comparable[] a = { 49, 38, 65, 97, 76, 13, 27, 50 };
+        //Comparable[] a = { 49, 38, 65, 97, 76, 13, 27, 50 };
+        Comparable[] a = { 'Q','U','I','C','K','S','O','R','T','E','X','A','M','P','L','E' };
         new QuickSort().sort(a);
         show(a);
     }
