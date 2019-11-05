@@ -33,8 +33,8 @@ public class SortCompare {
         String alg1 = "Insertion";
         String alg2 = "Selection";
         String alg3 = "Shell";
-        int N = Integer.parseInt("1000");
-        int T = Integer.parseInt("100");
+        int N = Integer.parseInt("100");
+        int T = Integer.parseInt("10000");
         double t1 = timeRandomInput(alg1, N, T);
         double t2 = timeRandomInput(alg2, N, T);
         double t3 = timeRandomInput(alg3, N, T);

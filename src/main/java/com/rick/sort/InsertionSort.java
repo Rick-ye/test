@@ -11,6 +11,7 @@ public class InsertionSort extends Sort {
     @Override
     protected void sort(Comparable[] a) {
         for (int i = 1; i < a.length; i++) {
+            //将a[i]插入到a[i-1],a[i-2],a[i-3]...中
             for (int j = i; j > 0 && compare(a[j], a[j-1]); j--) {
                 exch(j, j-1, a);
             }

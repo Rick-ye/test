@@ -11,9 +11,11 @@ public class ShellSort extends Sort {
         int n = a.length;
         int h =  1;
         while (h < n/3)
-            h = h*3 + 1;
+            h = h*3 + 1;  //1,4,13....
         while (h >= 1) {
+            //将数组变为h有序
             for (int i = h; i < n; i++) {
+                //将a[i]插入到a[i-1],a[i-2],a[i-3]...中
                 for (int j = i; j >= h && compare(a[j], a[j-h]); j-=h) {
                     exch(j, j-h, a);
                 }

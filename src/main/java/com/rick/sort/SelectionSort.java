@@ -7,6 +7,7 @@ package com.rick.sort;
  * 如此往复，直到将整个数组排序。因为它在不断地选择剩余元素中的最小元素
  */
 public class SelectionSort extends Sort {
+
     public void sort(Comparable[] arr) {
         for (int i = 0; i < arr.length; i++) {
             int min = i;    //最小元素的索引
