@@ -11,7 +11,11 @@ import java.util.List;
  * 总的来说，插入排序对于部分有序的数组十分高效，也很适合小规模数组
  */
 public class InsertionSort extends Sort {
-    @Override
+    /**
+     * 旧版
+     * @param a
+     */
+    /*@Override
     protected void sort(Comparable[] a) {
         for (int i = 1; i < a.length; i++) {
             //将a[i]插入到a[i-1],a[i-2],a[i-3]...中
@@ -19,11 +23,34 @@ public class InsertionSort extends Sort {
                 exch(j, j-1, a);
             }
         }
+    }*/
+
+    /**
+     * 改进版，不需要交换元素
+     * 在数组较大时，效率几乎提高了一倍
+     * @param a
+     */
+    @Override
+    public void sort(Comparable[] a){
+        int N = a.length;
+        for(int i=1;i<N;i++){
+            Comparable temp = a[i];
+            int j;
+            for(j=i;j>0 && compare(temp, a[j-1]); j--){
+                    a[j] = a[j-1];
+            }
+            a[j] = temp;
+
+        }
     }
 
+
     public static void main(String[] args) {
-        Comparable[] arr = {"3.0","53.2","2.2","2.3","5","7","23"};
+        //Comparable[] arr = {"r","d","t","s","w","a","c"};
+        Comparable[] arr = { 49, 38, 65, 97, 76, 13, 27, 50 };
         new InsertionSort().sort(arr);
         show(arr);
     }
+
+
 }

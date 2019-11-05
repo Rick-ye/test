@@ -22,8 +22,13 @@ public class QuickSort extends Sort {
      * @param hi
      */
     private void sort(Comparable[] a, int lo, int hi) {
-        if (lo >= hi)
+        //if (lo >= hi)
+        //    return;
+        int M = 10;
+        if (hi <= lo + M){
+            //new InsertionSort().sort(a, lo, hi);
             return;
+        }
         int j = partition(a, lo, hi);   //切分
         sort(a, lo, j-1);           //将左半部分排序
         sort(a, j+1, hi);           //将有半部分排序
