@@ -13,7 +13,7 @@ import com.rick.sort.Sort;
 public class MergeSort1 extends Sort {
 
     @Override
-    protected void sort(Comparable[] a) {
+    public void sort(Comparable[] a) {
         aux = new Comparable[a.length];
         sort(a, 0, a.length - 1);
     }
@@ -33,13 +33,10 @@ public class MergeSort1 extends Sort {
         merge(a, lo, mid, hi);   //归并结果
     }
 
-
-
     public static void main(String[] args) {
-        Comparable[] a = { 49, 38, 65, 97, 76, 13, 27, 50 };
+        Comparable[] a = { 7, 1, 5, 8, 3, 2, 4, 6 };
         new MergeSort1().sort(a);
         show(a);
     }
-
 
 }

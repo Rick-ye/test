@@ -14,7 +14,7 @@ import com.rick.sort.Sort;
  */
 public class MergeSort2 extends Sort {
     @Override
-    protected void sort(Comparable[] a) {
+    public void sort(Comparable[] a) {
         int n = a.length;
         aux = new Comparable[a.length];
         for (int sz = 1; sz < n; sz = sz+sz) {
@@ -25,7 +25,7 @@ public class MergeSort2 extends Sort {
     }
 
     public static void main(String[] args) {
-        Comparable[] a = { 49, 38, 65, 97, 76, 13, 27, 50 };
+        Comparable[] a = { 7, 1, 5, 8, 3, 2, 4, 6 };
         new MergeSort2().sort(a);
         show(a);
     }

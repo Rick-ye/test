@@ -1,4 +1,4 @@
-        sort(a,0,7)
+          sort(a,0,7)
 左半边排序   sort(a,0,3)
                 sort(a,0,1)
                     sort(a,0,0)——>return;
