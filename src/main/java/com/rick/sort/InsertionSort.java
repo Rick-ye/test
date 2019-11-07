@@ -44,13 +44,30 @@ public class InsertionSort extends Sort {
         }
     }
 
+    /**
+     * 数组局部插入排序
+     * @param a
+     * @param lo
+     * @param hi
+     */
+    public void sort(Comparable[] a, int lo, int hi) {
+        for (int i = lo; i <= hi; i++) {
+            Comparable temp = a[i];
+            int j;
+            for (j = i; j > lo && compare(temp, a[j-1]); j--) {
+                a[j] = a[j-1];
+            }
+            a[j] = temp;
+        }
+    }
 
     public static void main(String[] args) {
         //Comparable[] arr = {"r","d","t","s","w","a","c"};
         Comparable[] arr = { 49, 38, 65, 97, 76, 13, 27, 50 };
-        new InsertionSort().sort(arr);
+        new InsertionSort().sort(arr, 2, 5);
         show(arr);
     }
+
 
 
 }
