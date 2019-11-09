@@ -4,6 +4,8 @@ import com.rick.sort.merge.MergeSort1;
 import com.rick.sort.merge.MergeSort2;
 import org.apache.commons.lang3.time.StopWatch;
 
+import java.util.Random;
+
 /**
  * N = 10000,T=1000
  * Selection: 68991.0
@@ -17,10 +19,27 @@ import org.apache.commons.lang3.time.StopWatch;
  * Merge2: 1041.0
  */
 public class SortCompare {
+    
+
+    private static double timeRandomChars(String alg, int N, int T) {
+        Character[] c = {'A','B','C','D','E','F','G','H','I','J','K','V','L','M','N'};
+        double total = 0.0d;
+        Character[] a = new Character[N];
+        Random random = new Random();
+        for (int i = 0; i < T; i++) {
+            for (int k = 0; k < N; k++) {
+                int j = random.nextInt(15);
+                a[k]=c[j];
+            }
+            total += time(alg, a);
+        }
+        return total;
+    }
 
     public static double time(String alg, Comparable[] a) {
         StopWatch watch = new StopWatch();
         watch.start();
+
         if ("Insertion".equals(alg))
             new InsertionSort().sort(a);
         if ("Selection".equals(alg))
@@ -46,6 +65,10 @@ public class SortCompare {
             }
             total += time(alg, a);
         }
+        for (int i = 0; i < 100; i++) {
+            System.out.print(a[i] + ",");
+        }
+        System.out.println();
         return total;
     }
 
@@ -57,21 +80,22 @@ public class SortCompare {
         String alg5 = "Merge2";
         String alg6 = "Quick";
         int N = Integer.parseInt("10000");
-        int T = Integer.parseInt("100");
-        double t1 = timeRandomInput(alg1, N, T);
+        int T = Integer.parseInt("1000");
+        /*double t1 = timeRandomInput(alg1, N, T);
         double t2 = timeRandomInput(alg2, N, T);
-        /*double t3 = timeRandomInput(alg3, N, T);
+        double t3 = timeRandomInput(alg3, N, T);
         double t4 = timeRandomInput(alg4, N, T);
-        double t5 = timeRandomInput(alg5, N, T);
-        double t6 = timeRandomInput(alg6, N, T);*/
+        double t5 = timeRandomInput(alg5, N, T);*/
+//        double t6 = timeRandomInput(alg6, N, T);
+        double t6 = timeRandomChars(alg6, N, T);
 
-        System.out.println("Insertion: " + t1);
+        /*System.out.println("Insertion: " + t1);
         System.out.println("Selection: " + t2);
 
-        System.out.println("times: " + t2/t1);
+        System.out.println("times: " + t2/t1);*/
         /*System.out.println("Shell: " + t3);
         System.out.println("Merge1: " + t4);
-        System.out.println("Merge2: " + t5);
-        System.out.println("Quick: " + t6);*/
+        System.out.println("Merge2: " + t5);*/
+        System.out.println("Quick: " + t6);
     }
 }
