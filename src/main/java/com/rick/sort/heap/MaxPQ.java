@@ -1,20 +1,25 @@
 package com.rick.sort.heap;
 
-import com.rick.sort.Sort;
-
+import java.util.Comparator;
 import java.util.Random;
 
 /**
  * 基于堆的泛型优先队列的实现
  * @param <Key>
  */
-public class MaxPQ<Key extends Comparable<Key>> extends Sort {
+public class MaxPQ<Key> {
 
     private Key[] pq;
     private int N = 0;
+    //比较器
+    private Comparator comparator;
 
     public MaxPQ(int max) {
         pq = (Key[]) new Comparable[max+1];
+    }
+
+    public MaxPQ(Comparator comparator) {
+        this.comparator = comparator;
     }
 
     /**
@@ -76,7 +81,11 @@ public class MaxPQ<Key extends Comparable<Key>> extends Sort {
      * @return
      */
     private boolean compare(int i, int j) {
-        return pq[i].compareTo(pq[j]) < 0;
+        if (comparator != null) {
+            return comparator.compare(pq[i], pq[j]) < 0;
+        }
+        //return pq[i].compareTo(pq[j]) < 0;
+        return false;
     }
 
     /**
@@ -117,29 +126,6 @@ public class MaxPQ<Key extends Comparable<Key>> extends Sort {
         }
     }
 
-    private void sink(Comparable[] a, int k, int size) {
-        while (N >= 2*k) {
-            int j = 2*k;
-            if (j < N && compare(j, j+1))
-                j++;
-            if (!compare(k, j))
-                break;
-            exch(k, j);
-            k = j;
-        }
-    }
-
-    public void sort(Comparable[] a) {
-        int N = a.length;
-        for (int i = N/2; i >= 1; i--) {
-            sink(i);
-        }
-        while (N > 1) {
-            exch(1, --N, a);
-            sink(N);
-        }
-    }
-
     private static char randomChar() {
         Character[] c = {'A','B','C','D','E','F','G','H','I','J','K','V','L','M','N',
                 'O','P','Q','R','S','T','U','V','W','X','Y','Z'};
@@ -149,9 +135,13 @@ public class MaxPQ<Key extends Comparable<Key>> extends Sort {
     }
 
     public static void main(String[] args) {
-        Comparable[] a = {12,34,53,2,3,52,43,5};
-        new MaxPQ<Integer>(a.length).sort(a);
-        show(a);
+        int n = 11;
+        MaxPQ pq = new MaxPQ(n);
+        for (int i = 0; i < n; i++) {
+            pq.insert(randomChar());
+        }
+        System.out.println(pq.delMax());
+        pq.show();
     }
 
 }
