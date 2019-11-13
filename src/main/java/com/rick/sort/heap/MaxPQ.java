@@ -1,5 +1,6 @@
 package com.rick.sort.heap;
 
+import java.util.Comparator;
 import java.util.Random;
 
 /**
@@ -10,8 +11,24 @@ public class MaxPQ<Key extends Comparable<Key>> {
 
     private Key[] pq;
     private int N = 0;
+    //比较器
+    private Comparator comparator;
 
+    /**
+     * 使用默认的Comparable比较
+     * @param max
+     */
     public MaxPQ(int max) {
+        pq = (Key[]) new Comparable[max+1];
+    }
+
+    /**
+     * 实现自己的比较器
+     * @param max 数组大小
+     * @param comparator 可以提工提供自己的比较器
+     */
+    public MaxPQ(int max, Comparator comparator) {
+        this.comparator = comparator;
         pq = (Key[]) new Comparable[max+1];
     }
 
@@ -74,6 +91,9 @@ public class MaxPQ<Key extends Comparable<Key>> {
      * @return
      */
     private boolean compare(int i, int j) {
+        if (comparator != null) {
+            return comparator.compare(pq[i], pq[j]) < 0;
+        }
         return pq[i].compareTo(pq[j]) < 0;
     }
 
@@ -115,7 +135,7 @@ public class MaxPQ<Key extends Comparable<Key>> {
         }
     }
 
-    private static char randomChar() {
+    public static char randomChar() {
         Character[] c = {'A','B','C','D','E','F','G','H','I','J','K','V','L','M','N',
                 'O','P','Q','R','S','T','U','V','W','X','Y','Z'};
         Random random = new Random();

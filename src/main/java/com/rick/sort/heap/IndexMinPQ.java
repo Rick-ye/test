@@ -3,7 +3,7 @@ package com.rick.sort.heap;
 /**
  * 基于关联索引的泛型优先队列的实现
  */
-public class IndexMinPQ<Item extends Comparable<Item>> extends PQ {
+public class IndexMinPQ<Item extends Comparable<Item>> {
 
     private Item[] pq;
 
@@ -177,6 +177,13 @@ public class IndexMinPQ<Item extends Comparable<Item>> extends PQ {
             System.out.println(pq.min());
         }
 
+    }
+
+    static int i = 0;
+    protected static char sortChar() {
+        Character[] c = {'A','B','C','D','E','F','G','H','I','J','K','V','L','M','N',
+                'O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+        return c[i++];
     }
 
 }
