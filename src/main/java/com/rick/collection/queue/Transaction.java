@@ -3,7 +3,7 @@ package com.rick.collection.queue;
 import java.util.Comparator;
 import java.util.Date;
 
-public class Transaction implements Comparable {
+public class Transaction implements Comparable<Transaction> {
     private final String who;
     private final Date when;
     private final Double amount;
@@ -14,7 +14,7 @@ public class Transaction implements Comparable {
     }
 
     @Override
-    public int compareTo(Object o) {
+    public int compareTo(Transaction o) {
         return 0;
     }
 
@@ -34,7 +34,7 @@ public class Transaction implements Comparable {
         }
     }
 
-    private static class AmountOrder implements Comparator<Transaction> {
+    public static class AmountOrder implements Comparator<Transaction> {
 
         @Override
         public int compare(Transaction o1, Transaction o2) {
@@ -43,5 +43,17 @@ public class Transaction implements Comparable {
             if (o1.amount > o2.amount) return 1;
             return 0;
         }
+    }
+
+    public String getWho() {
+        return who;
+    }
+
+    public Date getWhen() {
+        return when;
+    }
+
+    public Double getAmount() {
+        return amount;
     }
 }

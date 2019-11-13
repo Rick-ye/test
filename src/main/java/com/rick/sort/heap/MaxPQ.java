@@ -7,19 +7,29 @@ import java.util.Random;
  * 基于堆的泛型优先队列的实现
  * @param <Key>
  */
-public class MaxPQ<Key> {
+public class MaxPQ<Key extends Comparable<Key>> {
 
     private Key[] pq;
     private int N = 0;
     //比较器
     private Comparator comparator;
 
+    /**
+     * 使用默认的Comparable比较
+     * @param max
+     */
     public MaxPQ(int max) {
         pq = (Key[]) new Comparable[max+1];
     }
 
-    public MaxPQ(Comparator comparator) {
+    /**
+     * 实现自己的比较器
+     * @param max 数组大小
+     * @param comparator 可以提工提供自己的比较器
+     */
+    public MaxPQ(int max, Comparator comparator) {
         this.comparator = comparator;
+        pq = (Key[]) new Comparable[max+1];
     }
 
     /**
@@ -84,8 +94,7 @@ public class MaxPQ<Key> {
         if (comparator != null) {
             return comparator.compare(pq[i], pq[j]) < 0;
         }
-        //return pq[i].compareTo(pq[j]) < 0;
-        return false;
+        return pq[i].compareTo(pq[j]) < 0;
     }
 
     /**
@@ -126,7 +135,7 @@ public class MaxPQ<Key> {
         }
     }
 
-    private static char randomChar() {
+    public static char randomChar() {
         Character[] c = {'A','B','C','D','E','F','G','H','I','J','K','V','L','M','N',
                 'O','P','Q','R','S','T','U','V','W','X','Y','Z'};
         Random random = new Random();
@@ -134,14 +143,6 @@ public class MaxPQ<Key> {
         return c[i];
     }
 
-    public static void main(String[] args) {
-        int n = 11;
-        MaxPQ pq = new MaxPQ(n);
-        for (int i = 0; i < n; i++) {
-            pq.insert(randomChar());
-        }
-        System.out.println(pq.delMax());
-        pq.show();
-    }
+
 
 }
