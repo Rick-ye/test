@@ -8,7 +8,7 @@ import java.util.Iterator;
  * 在结构化存储数据集时，链表是数组的一种重要的替代方式
  * @param <T>
  */
-public class Queue<T> {
+public class Queue<T> implements Iterable<T> {
 
     //队列的开头
     private Node first;
@@ -38,7 +38,7 @@ public class Queue<T> {
      * 否则将旧的最后一个元素指向新节点
      * @param t
      */
-    private void enqueue(T t) {
+    public void enqueue(T t) {
         Node oldLast = last;
         last = new Node();
         last.t = t;
@@ -65,7 +65,7 @@ public class Queue<T> {
         return t;
     }
 
-    private Iterator<T> iterator() {
+    public Iterator<T> iterator() {
         return new LinkIterator();
     }
 

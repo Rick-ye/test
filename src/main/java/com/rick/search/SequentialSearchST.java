@@ -1,7 +1,5 @@
 package com.rick.search;
 
-import org.junit.Test;
-
 import java.util.Iterator;
 
 public class SequentialSearchST<Key, Value> {
@@ -84,19 +82,5 @@ public class SequentialSearchST<Key, Value> {
         }
     }
 
-    @Test
-    public void test() {
-        String[] a = {"S","E","A","R","C","H","E","X","A","M","P","L","E"};
-        SequentialSearchST<String, Integer> st = new SequentialSearchST<>();
-        for (int i = 0; i < a.length; i++) {
-            st.put(a[i], i);
-        }
-        Iterable<String> keys = st.keys();
-        Iterator<String> iterator = keys.iterator();
-        while (iterator.hasNext()) {
-            String key = iterator.next();
-            Integer value = st.get(key);
-            System.out.println(key + ": "+ value);
-        }
-    }
+
 }
