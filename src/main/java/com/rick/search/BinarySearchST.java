@@ -47,4 +47,17 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
     public int rank(Key key) {
         return 0;
     }
+
+    public void delete(Key key) {
+        int i = rank(key);
+        if (i<=n && keys[i].compareTo(key) == 0) {
+            for (int j = n; j > i; j--) {
+                keys[j-1] = keys[j];
+                values[j-1] = values[j];
+            }
+            keys[i] = null;
+            values[i] = null;
+            n--;
+        }
+    }
 }
