@@ -54,4 +54,17 @@ public class Test {
     }
 
 
+    @org.junit.Test
+    public void testBST() {
+        BST<String, Integer> bst = new BST<>();
+        String[] a = {"S","E","A","R","C","H","E","X","A","M","P","L","E","Z"};
+        for (int i = 0; i < a.length; i++) {
+            bst.put(a[i], i);
+        }
+        System.out.println(bst.max());
+        //System.out.println(bst.floor("Q"));
+        System.out.println(bst.ceiling("B"));
+        System.out.println(bst.select(6));
+    }
+
 }
