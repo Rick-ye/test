@@ -96,10 +96,10 @@ public class Queue<T> implements Iterable<T> {
         queue.enqueue("rick");
         queue.enqueue("Tom");
         queue.enqueue("Simba");
-        System.out.println(queue.size());
-        System.out.println(queue.dequeue());
-        System.out.println(queue.dequeue());
-        System.out.println(queue.dequeue());
+//        System.out.println(queue.size());
+//        System.out.println(queue.dequeue());
+//        System.out.println(queue.dequeue());
+//        System.out.println(queue.dequeue());
         queue.enqueue("Doris");
 
         Iterator<String> iterator = queue.iterator();

@@ -1,7 +1,6 @@
 package com.rick.search;
 
 import com.rick.collection.queue.Queue;
-import org.junit.Test;
 
 /**
  * 有序二分查找

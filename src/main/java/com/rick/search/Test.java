@@ -3,6 +3,8 @@ package com.rick.search;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.time.StopWatch;
 
+import java.util.Iterator;
+
 public class Test {
 
     /**
@@ -61,10 +63,22 @@ public class Test {
         for (int i = 0; i < a.length; i++) {
             bst.put(a[i], i);
         }
+
+        Iterable<String> keys = bst.keys("E","U");
+        Iterator<String> it = keys.iterator();
+        while (it.hasNext()) {
+            System.out.println(it.next());
+        }
+
         System.out.println(bst.max());
         //System.out.println(bst.floor("Q"));
         System.out.println(bst.ceiling("B"));
         System.out.println(bst.select(6));
+        //bst.deleteMax();
+        bst.deleteMin();
+
+        System.out.println(bst.get("A"));
+        System.out.println(bst.get("X"));
     }
 
 }

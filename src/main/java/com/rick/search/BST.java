@@ -1,5 +1,7 @@
 package com.rick.search;
 
+import com.rick.collection.queue.Queue;
+
 /**
  * 二叉树查找
  * @param <Key>
@@ -177,23 +179,78 @@ public class BST<Key extends Comparable<Key>, Value> {
      * @return
      */
     public int rank(Key key) {
-        return 0;
+        return rank(root, key);
+    }
+
+    private int rank(Node x, Key key) {
+        if (x == null) return 0;
+        int cmp = key.compareTo(x.key);
+        if (cmp < 0) return rank(x.left, key);
+        else if (cmp > 0) return size(x) + 1 + rank(x.right, key);
+        else return size(x.left);
     }
 
     public void delete(Key key) {
+        root = delete(root, key);
+    }
 
+    private Node delete(Node x, Key key) {
+        if (x == null) return null;
+        int cmp = key.compareTo(x.key);
+        if (cmp < 0) delete(x.left, key);
+        else if (cmp > 0) delete(x.right, key);
+        else {
+            if (x.right == null) return x.left;
+            if (x.left == null) return x.right;
+            Node t = x;
+            x = min(t.right);
+            x.right = deleteMin(t.right);
+            x = t.left;
+        }
+        x.count = size(x.left) + size(x.right) + 1;
+        return x;
     }
 
     public void deleteMin() {
+        root = deleteMin(root);
+    }
 
+    private Node deleteMin(Node x) {
+        if (x == null) return null;
+        if (x.left == null) return x.right;
+        x.left = deleteMin(x.left);
+        x.count = size(x.left) + size(x.right) + 1;
+        return x;
     }
 
     public void deleteMax() {
+        deleteMax(root);
+    }
 
+    private Node deleteMax(Node x) {
+        if (x == null) return null;
+        if (x.right == null) return x.left;
+        x.right = deleteMax(x.left);
+        x.count = size(x.left) + size(x.right) + 1;
+        return x;
     }
 
     public Iterable<Key> keys() {
+        return keys(min(), max());
+    }
 
-        return null;
+    public Iterable<Key> keys(Key min, Key max) {
+        Queue<Key> queue = new Queue<>();
+        keys(root, queue, min, max);
+        return queue;
+    }
+
+    private void keys(Node x, Queue<Key> queue, Key lo, Key hi) {
+        if (x == null) return;
+        int cmplo = lo.compareTo(x.key);
+        int cmphi = hi.compareTo(x.key);
+        if (cmplo < 0) keys(x.left, queue, lo, hi);
+        if (cmplo <= 0 && cmphi >= 0) queue.enqueue(x.key);
+        if (cmphi > 0) keys(x.right, queue, lo, hi);
     }
 }
