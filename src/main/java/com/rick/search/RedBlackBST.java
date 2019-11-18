@@ -1,5 +1,6 @@
 package com.rick.search;
 
+import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 import com.sun.org.apache.regexp.internal.RE;
 
 import java.util.Random;
@@ -38,19 +39,57 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
         }
     }
 
+
+    public void put(Key key, Value value) {
+        put(root, key, value);
+    }
+
+    private Node put(Node h, Key key, Value value) {
+        if (h == null)
+            return new Node(key, value, 1, RED);
+        int cmp = key.compareTo(h.key);
+        if (cmp < 0) return put(h.left, key, value);
+        else if (cmp > 0) return put(h.right, key, value);
+        else h.value = value;
+
+        //连续出现两个红链接，右旋
+        if (isRed(h.left) && isRed(h.left.left))
+            rotateRight(h);
+        //红色右链接(左链接不为红色)的左旋
+        if (isRed(h.right) && !isRed(h.left))
+            rotateLeft(h);
+        //两个字节点都为红链接
+        if (isRed(h.left) && isRed(h.right))
+            flipColor(h);
+        h.count = size(h.left) + size(h.right) + 1;
+        return h;
+    }
+
+    public void deleteMin() {
+        deleteMin(root);
+    }
+
+    private Node deleteMin(Node h) {
+        if (h == null) return null;
+        if (isRed(h.left))
+            return h.left;
+
+        return null;
+    }
+
     /**
      * 当h右链接为红色时，需要左旋，将红链接左旋到左链接
      * @param h
      * @return
      */
-    public Node rotateLeft(Node h) {
+    private Node rotateLeft(Node h) {
         Node x = h.right;
         h.right = x.left;
         x.left = h;
         x.color = h.color;
         h.color = RED;
         x.count = h.count;
-        h.count = size(h.left);
+        h.count = size(h.left) + size(x.right) + 1;
         return x;
     }
 
@@ -59,10 +98,26 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
      * @param h
      * @return
      */
-    public Node rotateRight(Node h) {
+    private Node rotateRight(Node h) {
         Node x = h.left;
-        
+        h.left = x.right;
+        x.right = h;
+        x.color = h.color;
+        h.color = RED;
+        x.count = h.count;
+        h.count = size(h.right) + size(h.left) + 1;
         return x;
+    }
+
+
+    /**
+     * 将一个节点的两个子节点由红变黑，同时该节点也由黑变红
+     * @param x
+     */
+    private void flipColor(Node x) {
+        x.color = RED;
+        x.left.color = BLACK;
+        x.right.color = BLACK;
     }
 
     /**

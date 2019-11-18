@@ -217,14 +217,15 @@ public class BST<Key extends Comparable<Key>, Value> {
 
     private Node deleteMin(Node x) {
         if (x == null) return null;
-        if (x.left == null) return x.right;
+        if (x.left == null)
+            return x.right;
         x.left = deleteMin(x.left);
         x.count = size(x.left) + size(x.right) + 1;
         return x;
     }
 
     public void deleteMax() {
-        deleteMax(root);
+        root = deleteMax(root);
     }
 
     private Node deleteMax(Node x) {
