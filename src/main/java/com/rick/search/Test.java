@@ -81,6 +81,16 @@ public class Test {
         System.out.println(bst.get("X"));
     }
 
+    @org.junit.Test
+    public void testRedBlack() {
+        RedBlackBST<String, Integer> rb = new RedBlackBST<>();
+        String[] a = {"S","E","A","R","C","H","E","X","A","M","P","L","E","Z"};
+ //       String[] a = {"A","B","C"};
+        for (int i = 0; i < a.length; i++) {
+            rb.put(a[i], i);
+        }
+        rb.deleteMin();
+    }
 
 }
 

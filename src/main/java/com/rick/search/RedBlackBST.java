@@ -41,40 +41,81 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
 
 
     public void put(Key key, Value value) {
-        put(root, key, value);
+        root = put(root, key, value);
+        root.color = BLACK;
     }
 
     private Node put(Node h, Key key, Value value) {
         if (h == null)
             return new Node(key, value, 1, RED);
         int cmp = key.compareTo(h.key);
-        if (cmp < 0) return put(h.left, key, value);
-        else if (cmp > 0) return put(h.right, key, value);
-        else h.value = value;
+        if (cmp < 0)
+            h.left = put(h.left, key, value);
+        else if (cmp > 0)
+            h.right =  put(h.right, key, value);
+        else
+            h.value = value;
 
-        //连续出现两个红链接，右旋
-        if (isRed(h.left) && isRed(h.left.left))
-            rotateRight(h);
+
+        return balance(h);
+    }
+
+    public void deleteMin() {
+        if (!isRed(root.left) && !isRed(root.right))
+            root.color = RED;
+        root = deleteMin(root);
+        if (!isEmpty())
+            root.color = BLACK;
+    }
+
+    /**
+     * 为了删除一个节点，该方法不仅要在构造临时4-节点时
+     * 沿着查找路径向下进行变换，还要在分解遗留的4-节点时
+     * 沿着查找路径向上进行变化（平衡二叉查找树的过程）
+     * @param h
+     * @return
+     */
+    private Node deleteMin(Node h) {
+        if (h.left == null) return null;
+        //判断当前节点的左节点是否为2-节点
+        if (!isRed(h.left) && !isRed(h.left.left))
+            //即当左子节点为2-节点的时候执行这个方法
+            h = moveRedLeft(h);
+        h.left = deleteMin(h.left);
+        return balance(h);
+    }
+
+    /**
+     * 处理2-节点
+     * @param h
+     * @return
+     */
+    private Node moveRedLeft(Node h) {
+        //将当前节点设为黑色，子节点为红。
+        flipColors(h);
+        //if右子节点为非2-节点
+        if (isRed(h.right.left)) {
+            h.right = rotateRight(h.right);
+            h = rotateLeft(h);
+            flipColors(h);
+        }
+        return h;
+    }
+
+    private Node balance(Node h) {
+        if (isRed(h.right))
+            h = rotateLeft(h);
         //红色右链接(左链接不为红色)的左旋
         if (isRed(h.right) && !isRed(h.left))
-            rotateLeft(h);
-        //两个字节点都为红链接
+            h = rotateLeft(h);
+        //连续出现两个红链接，右旋
+        if (isRed(h.left) && isRed(h.left.left))
+            h = rotateRight(h);
+        //两个子节点都为红链接
         if (isRed(h.left) && isRed(h.right))
             flipColor(h);
         h.count = size(h.left) + size(h.right) + 1;
         return h;
-    }
-
-    public void deleteMin() {
-        deleteMin(root);
-    }
-
-    private Node deleteMin(Node h) {
-        if (h == null) return null;
-        if (isRed(h.left))
-            return h.left;
-
-        return null;
     }
 
     /**
@@ -121,6 +162,16 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
     }
 
     /**
+     * 用于删除操作
+     * @param x
+     */
+    private void flipColors(Node x) {
+        x.color = BLACK;
+        x.left.color = RED;
+        x.right.color = RED;
+    }
+
+    /**
      * 总结点数
      * @return
      */
@@ -138,6 +189,10 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
             return 0;
         else
             return x.count;
+    }
+
+    public boolean isEmpty() {
+        return root == null;
     }
 
     /**
