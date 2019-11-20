@@ -1,0 +1,2 @@
+h=M h=deleteMin(h)
+h=M     h.left=deleteMin(h.left)
