@@ -1,9 +1,5 @@
 package com.rick.search;
 
-import com.sun.org.apache.regexp.internal.RE;
-
-import java.util.Random;
-
 /**
  * 平衡查找树（红黑二叉查找树，简称红黑树）
  *
@@ -61,7 +57,7 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
      */
     public Node rotateRight(Node h) {
         Node x = h.left;
-        
+
         return x;
     }
 
