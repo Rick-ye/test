@@ -1,7 +1,5 @@
 package com.rick.search;
 
-import com.sun.org.apache.regexp.internal.RE;
-
 /**
  * 平衡查找树（红黑二叉查找树，简称红黑树）
  *

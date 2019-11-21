@@ -43,8 +43,9 @@ public class SeparateChainingHashST<Key, Value> {
 
     public Iterable<Key> keys() {
         for (int i = 0; i < M; i++) {
-            sts[i].keys();
+            return sts[i].keys();
         }
+        return null;
     }
 
 }
