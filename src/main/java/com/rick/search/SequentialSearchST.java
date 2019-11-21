@@ -2,6 +2,11 @@ package com.rick.search;
 
 import java.util.Iterator;
 
+/**
+ * 无序链表的顺序查找
+ * @param <Key> 键
+ * @param <Value> 值
+ */
 public class SequentialSearchST<Key, Value> {
     //第一个节点
     private Node first;

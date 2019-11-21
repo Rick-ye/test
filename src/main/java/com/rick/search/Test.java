@@ -58,17 +58,24 @@ public class Test {
 
     @org.junit.Test
     public void testBST() {
+        int n = 1000000;
         BST<String, Integer> bst = new BST<>();
-        String[] a = {"S","E","A","R","C","H","E","X","A","M","P","L","E","Z"};
-        for (int i = 0; i < a.length; i++) {
-            bst.put(a[i], i);
+//        String[] a = {"S","E","A","R","C","H","E","X","A","M","P","L","E","Z"};
+////        for (int i = 0; i < a.length; i++) {
+////            bst.put(a[i], i);
+////        }
+        StopWatch watch = new StopWatch();
+        watch.start();
+        for (int i = 0; i < n; i++) {
+            bst.put(RandomStringUtils.randomAlphanumeric(5), i);
         }
-
-        Iterable<String> keys = bst.keys("E","U");
-        Iterator<String> it = keys.iterator();
-        while (it.hasNext()) {
-            System.out.println(it.next());
-        }
+        watch.split();
+        System.out.println("put time: " + watch.getSplitTime());
+//        Iterable<String> keys = bst.keys("E","U");
+//        Iterator<String> it = keys.iterator();
+//        while (it.hasNext()) {
+//            System.out.println(it.next());
+//        }
 
         System.out.println(bst.max());
         //System.out.println(bst.floor("Q"));
@@ -83,13 +90,25 @@ public class Test {
 
     @org.junit.Test
     public void testRedBlack() {
+        int n = 1000000;
         RedBlackBST<String, Integer> rb = new RedBlackBST<>();
+//        StopWatch watch = new StopWatch();
+//        watch.start();
+//        for (int i = 0; i < n; i++) {
+//            rb.put(RandomStringUtils.randomAlphanumeric(5), i);
+//        }
+//        watch.split();
+//        System.out.println("put time: " + watch.getSplitTime());
+//        System.out.println(rb.get("fdksf"));
+//        System.out.println("search time: "+watch.getTime());
         String[] a = {"S","E","A","R","C","H","E","X","A","M","P","L","E","Z"};
  //       String[] a = {"A","B","C"};
         for (int i = 0; i < a.length; i++) {
             rb.put(a[i], i);
         }
+        rb.delete("A");
         rb.deleteMin();
+        rb.deleteMax();
     }
 
 }

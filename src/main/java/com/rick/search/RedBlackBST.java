@@ -1,9 +1,6 @@
 package com.rick.search;
 
-import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 import com.sun.org.apache.regexp.internal.RE;
-
-import java.util.Random;
 
 /**
  * 平衡查找树（红黑二叉查找树，简称红黑树）
@@ -55,9 +52,33 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
             h.right =  put(h.right, key, value);
         else
             h.value = value;
-
-
         return balance(h);
+    }
+
+    /**
+     * 根据key获取value
+     * @param key
+     * @return
+     */
+    public Value get(Key key) {
+        return get(root, key);
+    }
+
+    /**
+     * 使用递归查找key所对应的value
+     * @param x
+     * @param key
+     * @return
+     */
+    private Value get(Node x, Key key) {
+        if (x == null) return null;
+        int cmp = key.compareTo(x.key);
+        if (cmp < 0)
+            return get(x.left, key);
+        else if (cmp > 0)
+            return get(x.right, key);
+        else
+            return x.value;
     }
 
     public void deleteMin() {
@@ -92,8 +113,10 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
      */
     private Node moveRedLeft(Node h) {
         //将当前节点设为黑色，子节点为红。
+        //假设h节点为红色，h.right和h.right.lect都为黑色
+        //将h.left或者h.left子节点之一变为红色
         flipColors(h);
-        //if右子节点为非2-节点
+        //if兄弟节点为非2-节点，在兄弟节点(即右子节点)那里借一个节点过来。
         if (isRed(h.right.left)) {
             h.right = rotateRight(h.right);
             h = rotateLeft(h);
@@ -102,6 +125,86 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
         return h;
     }
 
+    /**
+     * 删除最大值
+     */
+    public void deleteMax() {
+        if (!isRed(root.left) && !isRed(root.right))
+            root.color = RED;
+        root = deleteMax(root);
+        if (!isEmpty())
+            root.color = BLACK;
+    }
+
+    /**
+     * 递归删除
+     * @param h
+     * @return
+     */
+    private Node deleteMax(Node h) {
+        if (isRed(h.left)) h = rotateRight(h);
+        if (h.right == null) return null;
+        if (!isRed(h.right) && !isRed(h.right.left))
+            h = moveRedRight(h);
+        h.right = deleteMax(h.right);
+        return balance(h);
+    }
+
+    /**
+     * 处理2-节点
+     * @param h
+     * @return
+     */
+    private Node moveRedRight(Node h) {
+        //假设h节点为红色，h.right和h.right.lect都为黑色
+        //将h.right或者h.right子节点之一变为红色
+        flipColors(h);
+        //在兄弟节点中借节点
+        if (!isRed(h.left.left)) {
+            h = rotateRight(h);
+            flipColors(h);
+        }
+        return h;
+    }
+
+    public void delete(Key key) {
+        if (!isRed(root.left) && !isRed(root.right))
+            root.color = RED;
+        root = delete(root, key);
+        if (!isEmpty())
+            root.color = BLACK;
+    }
+
+    private Node delete(Node h, Key key) {
+        if (h == null) return null;
+        if (key.compareTo(h.key) < 0) {
+            if (!isRed(h.left) && !isRed(h.left.left))
+                h = moveRedLeft(h);
+            h.left = delete(h.left, key);
+        } else {
+            if (isRed(h.left))
+                h = rotateRight(h);
+            if (key.compareTo(h.key) == 0 && h.right == null)
+                return null;
+            if (!isRed(h.right) && !isRed(h.right.left))
+                h = moveRedRight(h);
+            if (key.compareTo(h.key) == 0) {
+                h.value = get(h.right, min(h.right).key);
+                h.key = min(h.right).key;
+                h.right = deleteMin(h.right);
+
+            } else {
+                h.right = delete(h.right, key);
+            }
+        }
+        return balance(h);
+    }
+
+    /**
+     * 修复红黑树。
+     * @param h
+     * @return
+     */
     private Node balance(Node h) {
         if (isRed(h.right))
             h = rotateLeft(h);
@@ -167,8 +270,10 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
      */
     private void flipColors(Node x) {
         x.color = BLACK;
-        x.left.color = RED;
-        x.right.color = RED;
+        if (x.left != null)
+            x.left.color = RED;
+        if (x.right != null)
+            x.right.color = RED;
     }
 
     /**
@@ -204,6 +309,24 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
     private boolean isRed(Node x) {
         if (x == null) return false;
         return x.color == RED;
+    }
+
+    public Key max() {
+        return max(root).key;
+    }
+
+    private Node max(Node x) {
+        if (x.right == null) return x;
+        return max(x.right);
+    }
+
+    public Key min() {
+        return min(root).key;
+    }
+
+    private Node min(Node x) {
+        if (x.left == null) return x;
+        return min(x.left);
     }
 
 }
