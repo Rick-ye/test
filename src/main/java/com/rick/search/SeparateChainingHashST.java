@@ -1,5 +1,9 @@
 package com.rick.search;
 
+import com.rick.collection.queue.Queue;
+
+import java.util.Iterator;
+
 /**
  * 基于拉链法的散列表
  * @param <Key>
@@ -27,6 +31,7 @@ public class SeparateChainingHashST<Key, Value> {
 
     public void put(Key key, Value value) {
         sts[hash(key)].put(key, value);
+
     }
 
     public Value get(Key key) {
@@ -38,14 +43,27 @@ public class SeparateChainingHashST<Key, Value> {
     }
 
     public void delete(Key key) {
-        sts[hash(key)].delete(key);
+        int i = hash(key);
+        SequentialSearchST<Key, Value> st = sts[i];
+        Iterable<Key> keys = st.keys();
+        Iterator<Key> it = keys.iterator();
+        while (it.hasNext()) {
+            if (key.equals(it.next())) {
+                st.delete(key);
+                break;
+            }
+        }
     }
 
     public Iterable<Key> keys() {
+        Queue<Key> queue = new Queue<>();
         for (int i = 0; i < M; i++) {
-            return sts[i].keys();
+            Iterable<Key> keys = sts[i].keys();
+            Iterator<Key> it = keys.iterator();
+            while (it.hasNext())
+                queue.enqueue(it.next());
         }
-        return null;
+        return queue;
     }
 
 }

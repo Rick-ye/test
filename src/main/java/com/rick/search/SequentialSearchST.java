@@ -51,13 +51,20 @@ public class SequentialSearchST<Key, Value> {
     }
 
     public void delete(Key key) {
-        /*for (Node x = first; x != null; x = x.next) {
-            if (key.equals(x.key)) {
-                x.next = x.next.next;
-                x.value = null;
+        if (first.key.equals(key)) {
+            first = first.next;
+            n--;
+            return;
+        }
+        for (Node x = first; x != null; x = x.next) {
+            Node next = x.next;
+            if (next != null && key.equals(next.key)) {
+                x.next = next.next;
+                n--;
                 return;
             }
-        }*/
+
+        }
     }
 
     public Iterable<Key> keys() {

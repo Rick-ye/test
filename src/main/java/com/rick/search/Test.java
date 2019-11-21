@@ -37,15 +37,23 @@ public class Test {
     public void testSequential() {
         int n = 100000;
         SequentialSearchST<String, Integer> st = new SequentialSearchST<>();
-        StopWatch watch = new StopWatch();
-        watch.start();
-        for (int i = 0; i < n; i++) {
-            st.put(RandomStringUtils.randomAlphanumeric(5), i);
+
+        String[] a = {"S","E","A","R","C","H","E","X","A","M","P","L","E","Z"};
+        for (int i = 0; i < a.length; i++) {
+            st.put(a[i], i);
         }
-        watch.split();
-        System.out.println("put time: " + watch.getSplitTime());
-        System.out.println(st.get("fdksf"));
-        System.out.println("search time: "+watch.getTime());
+        System.out.println(st.size());
+        st.delete("H");
+        System.out.println(st.size());
+//        StopWatch watch = new StopWatch();
+//        watch.start();
+//        for (int i = 0; i < n; i++) {
+//            st.put(RandomStringUtils.randomAlphanumeric(5), i);
+//        }
+//        watch.split();
+//        System.out.println("put time: " + watch.getSplitTime());
+//        System.out.println(st.get("fdksf"));
+//        System.out.println("search time: "+watch.getTime());
         /*Iterable<String> keys = st.keys();
         Iterator<String> iterator = keys.iterator();
         while (iterator.hasNext()) {
@@ -109,6 +117,22 @@ public class Test {
         rb.delete("A");
         rb.deleteMin();
         rb.deleteMax();
+    }
+
+    @org.junit.Test
+    public void testChainingHash() {
+        String[] a = {"S","E","A","R","C","H","E","X","A","M","P","L","E","Z"};
+        SeparateChainingHashST<Object, Object> st = new SeparateChainingHashST<>(15);
+        for (int i = 0; i < a.length; i++) {
+            st.put(a[i], i);
+        }
+        st.delete("H");
+        System.out.println(st.get("H"));
+        Iterable<Object> keys = st.keys();
+        Iterator<Object> it = keys.iterator();
+        while (it.hasNext()) {
+            System.out.println(it.next());
+        }
     }
 
 }
