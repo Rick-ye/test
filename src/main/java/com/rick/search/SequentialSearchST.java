@@ -51,6 +51,7 @@ public class SequentialSearchST<Key, Value> {
     }
 
     public void delete(Key key) {
+        //判断第一个key是否为目标key
         if (first.key.equals(key)) {
             first = first.next;
             n--;

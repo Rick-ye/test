@@ -126,8 +126,30 @@ public class Test {
         for (int i = 0; i < a.length; i++) {
             st.put(a[i], i);
         }
+        System.out.println(st.size());
         st.delete("H");
         System.out.println(st.get("H"));
+        Iterable<Object> keys = st.keys();
+        Iterator<Object> it = keys.iterator();
+        while (it.hasNext()) {
+            System.out.println(it.next());
+        }
+        System.out.println(st.size());
+    }
+
+    @org.junit.Test
+    public void testProbingHash() {
+        String[] a = {"S","E","A","R","C","H","E","X","A","M","P","L","E","Z"};
+        LinearProbingHashST<Object, Object> st = new LinearProbingHashST<>(15);
+        for (int i = 0; i < a.length; i++) {
+            st.put(a[i], i);
+        }
+        System.out.println(st.size());
+        st.delete("H");
+        System.out.println(st.get("H"));
+        System.out.println(st.get("A"));
+        System.out.println(st.size());
+        st.delete("A");
         Iterable<Object> keys = st.keys();
         Iterator<Object> it = keys.iterator();
         while (it.hasNext()) {

@@ -38,10 +38,22 @@ public class SeparateChainingHashST<Key, Value> {
         return sts[hash(key)].get(key);
     }
 
+    public int size() {
+        N = 0;
+        for (int i = 0; i < M; i++) {
+            N += sts[i].size();
+        }
+        return N;
+    }
+
     private int hash(Key key) {
         return key.hashCode() & 0x7fffffff % M;
     }
 
+    /**
+     * 删除操作
+     * @param key
+     */
     public void delete(Key key) {
         int i = hash(key);
         SequentialSearchST<Key, Value> st = sts[i];
@@ -55,6 +67,10 @@ public class SeparateChainingHashST<Key, Value> {
         }
     }
 
+    /**
+     * 迭代器
+     * @return
+     */
     public Iterable<Key> keys() {
         Queue<Key> queue = new Queue<>();
         for (int i = 0; i < M; i++) {
