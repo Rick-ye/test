@@ -14,19 +14,29 @@ public class Test {
      */
     @org.junit.Test
     public void testBinary() throws InterruptedException {
-        int n = 10000;
-        BinarySearchST<String, Integer> bsst = new BinarySearchST<>(2*n);
-        System.out.println("before put");
-        StopWatch watch = new StopWatch();
-        watch.start();
-        for (int i = 0; i < n; i++) {
-            bsst.put(RandomStringUtils.randomAlphanumeric(5), i);
+        String[] a = {"S", "E", "A", "R", "C", "H", "E", "X", "A", "M", "P", "L", "E", "Z"};
+        BinarySearchST<String, Integer> bsst = new BinarySearchST<>(a.length);
+        for (int i = 0; i < a.length; i++) {
+            bsst.put(a[i], i);
         }
-        watch.split();
-        System.out.println("put time: " + watch.getSplitTime());
-        System.out.println(bsst.get(bsst.select(3005)));
-        System.out.println("search time: "+watch.getTime());
+        System.out.println(bsst.get("F"));
+        Iterable<String> keys = bsst.keys();
+        Iterator<String> it = keys.iterator();
+        while (it.hasNext())
+            System.out.print(it.next());
     }
+
+//        System.out.println("before put");
+//        StopWatch watch = new StopWatch();
+//        watch.start();
+//        for (int i = 0; i < n; i++) {
+//            bsst.put(RandomStringUtils.randomAlphanumeric(5), i);
+//        }
+//        watch.split();
+//        System.out.println("put time: " + watch.getSplitTime());
+//        System.out.println(bsst.get(bsst.select(3005)));
+//        System.out.println("search time: "+watch.getTime());
+//    }
 
     /**
      * 测试无序链表
@@ -35,16 +45,17 @@ public class Test {
      */
     @org.junit.Test
     public void testSequential() {
-        int n = 100000;
         SequentialSearchST<String, Integer> st = new SequentialSearchST<>();
-
         String[] a = {"S","E","A","R","C","H","E","X","A","M","P","L","E","Z"};
         for (int i = 0; i < a.length; i++) {
             st.put(a[i], i);
         }
-        System.out.println(st.size());
-        st.delete("H");
-        System.out.println(st.size());
+        System.out.println(st.get("E"));
+    }
+
+//        System.out.println(st.size());
+//        st.delete("H");
+//        System.out.println(st.size());
 //        StopWatch watch = new StopWatch();
 //        watch.start();
 //        for (int i = 0; i < n; i++) {
@@ -61,7 +72,7 @@ public class Test {
             Integer value = st.get(key);
             System.out.println(key + ": "+ value);
         }*/
-    }
+
 
 
     @org.junit.Test
