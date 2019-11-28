@@ -31,7 +31,7 @@ public class Bag<T> implements Iterable<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return null;
+        return new ListIterator();
     }
 
     private class ListIterator implements Iterator<T> {
@@ -53,6 +53,17 @@ public class Bag<T> implements Iterable<T> {
         @Override
         public void remove() {
 
+        }
+    }
+
+    public static void main(String[] args) {
+        Bag<Integer> bag = new Bag<>();
+        for (int i = 0; i < 10; i++) {
+            bag.add(i);
+        }
+        Iterator<Integer> it = bag.iterator();
+        while (it.hasNext()) {
+            System.out.println(it.next());
         }
     }
 }
