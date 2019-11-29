@@ -14,7 +14,7 @@ import java.util.Iterator;
  * 3.操作所需的时间总是和集合大小无关
  * @param <T>
  */
-public class Stack<T> {
+public class Stack<T> implements Iterable<T> {
 
     /**
      * 第一个节点

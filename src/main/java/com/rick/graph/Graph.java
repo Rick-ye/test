@@ -1,6 +1,7 @@
 package com.rick.graph;
 
 import com.rick.collection.bag.Bag;
+import com.rick.graph.search.DepthFirstSearch;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,8 +19,9 @@ public class Graph {
     private static Bag<Integer>[] adj; //邻接表
     static BufferedReader reader;
     static Integer i;
+    public static String path = "graph/paths.txt";
     static {
-        InputStream stream = Graph.class.getClassLoader().getResourceAsStream("graph/tinyG.txt");
+        InputStream stream = Graph.class.getClassLoader().getResourceAsStream(path);
         reader = new BufferedReader(new InputStreamReader(stream));
         try {
             i = Integer.valueOf(reader.readLine());
@@ -59,6 +61,9 @@ public class Graph {
             }
             System.out.println();
         }
+
+        DepthFirstSearch search = new DepthFirstSearch(graph, 0);
+
     }
 
     public int E() {
@@ -89,7 +94,7 @@ public class Graph {
      * @param v
      * @return
      */
-    private Iterable<Integer> adj(int v) {
+    public Iterable<Integer> adj(int v) {
         return adj[v];
     }
 
