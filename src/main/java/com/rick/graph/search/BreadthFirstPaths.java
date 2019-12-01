@@ -6,9 +6,9 @@ import com.rick.graph.Graph;
 
 public class BreadthFirstPaths {
 
-    private boolean[] marked;
-    private int[] edgeTo;
-    private final int s;
+    private boolean[] marked;   //到达该顶点的最短路径已知吗？
+    private int[] edgeTo;       //到达该顶点的已知路径上的最后一个顶点
+    private final int s;        //起点
 
     public BreadthFirstPaths(Graph g, int s) {
         this.s = s;
@@ -45,5 +45,26 @@ public class BreadthFirstPaths {
         }
         path.push(s);
         return path;
+    }
+
+    public static void main(String[] args) {
+        try {
+            Graph graph = new Graph();
+            int s = 0;
+            BreadthFirstPaths paths = new BreadthFirstPaths(graph, s);
+            for (int v = 0; v < graph.V(); v++) {
+                System.out.print(s + " to " + v + ": ");
+                if (paths.hasPathTo(v)) {
+                    for (int x : paths.pathTo(v))
+                        if (x == s) System.out.print(x);
+                        else System.out.print("-" + x);
+                }
+                System.out.println();
+            }
+            System.out.println();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }

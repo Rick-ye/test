@@ -19,9 +19,9 @@ public class Graph {
     private static Bag<Integer>[] adj; //邻接表
     static BufferedReader reader;
     static Integer i;
-    public static String path = "graph/paths.txt";
+    public static String paths = "graph/tinyG.txt";
     static {
-        InputStream stream = Graph.class.getClassLoader().getResourceAsStream(path);
+        InputStream stream = Graph.class.getClassLoader().getResourceAsStream(paths);
         reader = new BufferedReader(new InputStreamReader(stream));
         try {
             i = Integer.valueOf(reader.readLine());
