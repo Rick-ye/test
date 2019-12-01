@@ -55,7 +55,7 @@ public class Queue<T> implements Iterable<T> {
      *
      * @return
      */
-    private T dequeue() {
+    public T dequeue() {
         T t = first.t;
         first = first.next;
         n--;
