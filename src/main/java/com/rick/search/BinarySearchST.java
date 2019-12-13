@@ -3,7 +3,7 @@ package com.rick.search;
 import com.rick.collection.queue.Queue;
 
 /**
- * 有序二分查找
+ * 有序数组中二分查找
  * @param <Key>
  * @param <Value>
  */
@@ -119,6 +119,11 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
         }
     }
 
+    /**
+     * 判断是否包含目标key
+     * @param k
+     * @return
+     */
     public boolean contains(Key k) {
         int i = rank(k);
         if (k.compareTo(keys[i]) == 0)
@@ -126,6 +131,20 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
         return false;
     }
 
+    /**
+     * 迭代器，遍历链表
+     * @return
+     */
+    public Iterable<Key> keys() {
+        return keys(keys[0], keys[n-1]);
+    }
+
+    /**
+     * 使用队列实现的迭代器
+     * @param lo
+     * @param hi
+     * @return
+     */
     public Iterable<Key> keys(Key lo, Key hi) {
         Queue<Key> queue = new Queue<>();
         for (int i = rank(lo); i < rank(hi); i++) {
