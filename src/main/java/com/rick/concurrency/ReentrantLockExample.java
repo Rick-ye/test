@@ -1,4 +1,4 @@
-package com.rick.lock;
+package com.rick.concurrency;
 
 import java.util.concurrent.locks.ReentrantLock;
 

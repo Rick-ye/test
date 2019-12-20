@@ -1,4 +1,4 @@
-package com.rick.lock;
+package com.rick.concurrency;
 
 public class InstanceFactory {
     private static class InstanceHolder {

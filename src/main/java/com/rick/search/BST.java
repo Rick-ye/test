@@ -2,6 +2,8 @@ package com.rick.search;
 
 import com.rick.collection.queue.Queue;
 
+import java.util.Iterator;
+
 /**
  * 二叉树查找
  * @param <Key>
@@ -105,6 +107,7 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
 
     private Node min(Node x) {
+        if (x == null) return null;
         if (x.left == null) return x;
         return min(x.left);
     }
@@ -256,5 +259,16 @@ public class BST<Key extends Comparable<Key>, Value> {
         if (cmplo < 0) keys(x.left, queue, lo, hi);
         if (cmplo <= 0 && cmphi >= 0) queue.enqueue(x.key);
         if (cmphi > 0) keys(x.right, queue, lo, hi);
+    }
+
+    public boolean contains(String key) {
+        Iterable<Key> keys = keys();
+        Iterator<Key> iterator = keys.iterator();
+        while (iterator.hasNext()) {
+            Key next = iterator.next();
+            if (key.equals(next))
+                return true;
+        }
+        return false;
     }
 }
