@@ -161,7 +161,7 @@ public class BST<Key extends Comparable<Key>, Value> {
      * @return
      */
     public Key select(int k) {
-
+        if (k > root.count) return null;
         return select(root, k);
     }
 
