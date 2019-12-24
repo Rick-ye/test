@@ -168,6 +168,13 @@ public class Test {
         }
     }
 
+    public static void main(String[] args) {
+        Integer i = 3;
+        String s = "ab";
+        System.out.println(i.hashCode());
+        System.out.println(s.hashCode());
+    }
+
 }
 
 

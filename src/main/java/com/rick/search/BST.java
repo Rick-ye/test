@@ -2,6 +2,8 @@ package com.rick.search;
 
 import com.rick.collection.queue.Queue;
 
+import java.util.Iterator;
+
 /**
  * 二叉树查找
  * @param <Key>
@@ -105,6 +107,7 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
 
     private Node min(Node x) {
+        if (x == null) return null;
         if (x.left == null) return x;
         return min(x.left);
     }
@@ -200,12 +203,15 @@ public class BST<Key extends Comparable<Key>, Value> {
         if (cmp < 0) delete(x.left, key);
         else if (cmp > 0) delete(x.right, key);
         else {
+            //如果被删除节点只有一个或者没有子节点的情况，
+            //要么返回空（没有子节点的情况），要么返回不为空的节点
             if (x.right == null) return x.left;
             if (x.left == null) return x.right;
-            Node t = x;
-            x = min(t.right);
-            x.right = deleteMin(t.right);
-            x = t.left;
+            //被删除节点含有两个节点的情况
+            Node t = x;                     //缓存x节点，赋值给Node引用t
+            x = min(t.right);               //找到t右子树中最小的节点,赋值给x
+            x.right = deleteMin(t.right);   //x.right指向节点t右子树中删除最小节点后的子树
+            x.left = t.left;                //x.left指向t.left
         }
         x.count = size(x.left) + size(x.right) + 1;
         return x;
@@ -253,5 +259,16 @@ public class BST<Key extends Comparable<Key>, Value> {
         if (cmplo < 0) keys(x.left, queue, lo, hi);
         if (cmplo <= 0 && cmphi >= 0) queue.enqueue(x.key);
         if (cmphi > 0) keys(x.right, queue, lo, hi);
+    }
+
+    public boolean contains(String key) {
+        Iterable<Key> keys = keys();
+        Iterator<Key> iterator = keys.iterator();
+        while (iterator.hasNext()) {
+            Key next = iterator.next();
+            if (key.equals(next))
+                return true;
+        }
+        return false;
     }
 }

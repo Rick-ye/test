@@ -1,4 +1,4 @@
-package com.rick.lock;
+package com.rick.concurrency;
 
 import org.apache.commons.lang3.time.StopWatch;
 import sun.misc.Unsafe;
