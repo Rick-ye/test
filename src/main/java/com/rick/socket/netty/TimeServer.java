@@ -1,6 +1,5 @@
 package com.rick.socket.netty;
 
-import io.netty.bootstrap.Bootstrap;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -17,9 +16,9 @@ public class TimeServer {
         try {
             ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workerGroup)
-                    .channel(NioServerSocketChannel.class)
-                    .option(ChannelOption.SO_BACKLOG, 1024)
-                    .childHandler(new ChildChannelHandler());
+                    .channel(NioServerSocketChannel.class)  //类似jdk nio类库中的ServerSocketChannel
+                    .option(ChannelOption.SO_BACKLOG, 1024)  //设置tcp中的参数
+                    .childHandler(new ChildChannelHandler());  //绑定I/O事件的处理类，类似react模式的handler类
 
             //绑定端口，同步等待成功
             ChannelFuture f = b.bind(port).sync();
