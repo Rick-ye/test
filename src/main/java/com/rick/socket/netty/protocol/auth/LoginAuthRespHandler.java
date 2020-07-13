@@ -6,7 +6,6 @@ import com.rick.socket.netty.protocol.entry.NettyMessage;
 import io.netty.channel.ChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -45,7 +44,11 @@ public class LoginAuthRespHandler extends ChannelHandlerAdapter {
         }
     }
 
-
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        nodeCheck.remove(ctx.channel().remoteAddress().toString());
+        ctx.fireExceptionCaught(cause);
+    }
 
     private NettyMessage buildResp(byte result) {
         NettyMessage message = new NettyMessage();
