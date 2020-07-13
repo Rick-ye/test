@@ -26,6 +26,7 @@ public class WaitNotify {
                         System.out.println(Thread.currentThread() + "flag is true. wait @" +
                                 new SimpleDateFormat("HH:mm:ss").format(new Date()));
                         lock.wait(); //会释放锁
+                        System.out.println("wait over");
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -46,6 +47,7 @@ public class WaitNotify {
                 System.out.println(Thread.currentThread() + " hold lock. notify @ " +
                         new SimpleDateFormat("HH:mm:ss").format(new Date()));
                 lock.notify();
+                System.out.println("notify over");
                 flag = false;
                 try {
                     TimeUnit.SECONDS.sleep(5);

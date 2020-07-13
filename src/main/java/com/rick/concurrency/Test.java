@@ -82,7 +82,7 @@ public class Test extends Thread {
         }
     }
     public static void main(String[] args){
-        long start = System.currentTimeMillis();
+        /*long start = System.currentTimeMillis();
         //100个线程
         for(int i =1 ; i<=60;i++ ){
             new Test().start();
@@ -95,7 +95,15 @@ public class Test extends Thread {
         System.out.println($synchronized);
         System.out.println(atomInteger);
         //System.out.println(longAdder);
-        System.out.println(cas);
+        System.out.println(cas);*/
+
+
+        int s = 1;
+        while (s < 14) {
+            s <<= 1;
+
+            System.out.println(s);
+        }
     }
     
 }

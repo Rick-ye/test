@@ -10,7 +10,7 @@ public class SimpleHttpServer {
     static DefaultThreadPool threadPool = new DefaultThreadPool<HttpRequestHandler>();
 
     //simpleHttpServer的根路径
-    static String basePath = "/html/Index.html";
+    static String basePath;
     static ServerSocket serverSocket;
     static int port = 8080;
 
